@@ -1,6 +1,4 @@
 
-// import { useRef } from 'react';
-// import { motion, useScroll, useTransform } from 'framer-motion'
 import Slide from '@/assets/Resources/slide-1.png'
 import styles from '@/styles/styles'
 

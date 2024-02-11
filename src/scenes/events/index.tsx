@@ -1,7 +1,6 @@
 import Navbar from '@/scenes/navbar'
 import Home from './home'
 import Footer from '@/scenes/footer'
-import Community from '../home/community'
 import { useEffect, useState } from 'react'
 import { SelectedPage } from '@/shared/types'
 
@@ -27,7 +26,6 @@ function EventsPage() {
       selectedPage = {selectedPage} 
       setSelectedPage = {setSelectedPage} />
         <Home/>
-        <Community/>
       <Footer/>
     </div>
   )

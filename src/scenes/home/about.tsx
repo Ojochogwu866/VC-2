@@ -19,7 +19,8 @@ function about() {
                 </p>
             </div>
         </div>
-        <div className=" w-full h-[691px] flex gap-[38px] bg-[#383838]  justify-start items-center -mt-2">
+        <div className=" w-full h-[691px] flex flex-col justify-center  bg-[#383838]  -mt-2">
+            <div className=" flex gap-[38px] justify-start items-center">
             <Card
                 title="Care Approach"
                 content="Our virtues and values uphold the health of our patients, and doing everything possible to give them the best care and ensure they receive maximal and adequate service."
@@ -57,9 +58,20 @@ function about() {
                 title="Mission"
                 content="Guided by a commitment to excellence, compassion, and innovation, we strive to empower individuals on their journey to optimal health. "
             />
+            </div>
+            <div className=" mt-8 flex gap-4 px-[100px]">
+                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="1.76367" width="47" height="47" rx="23.5" stroke="white" stroke-width="3"/>
+                    <path d="M29.647 16.9697L21.353 25.2637L29.647 33.5576" stroke="white" stroke-width="2.76464" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.263672" width="50" height="50" rx="25" fill="#515151"/>
+                    <path d="M21.353 33.5576L29.647 25.2637L21.353 16.9698" stroke="white" stroke-width="2.76464" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
         </div>
-        <main className="">
-            <div className=" h-[723px] w-full flex">
+        <main className="flex justify-center items-center mt-2">
+            <div className=" h-[723px] w-full flex justify-center items-center">
                 <img className=" h-full w-full object-cover" src={Slide1} alt=""/>
             </div>
         </main>
