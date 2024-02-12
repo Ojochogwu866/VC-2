@@ -1,5 +1,7 @@
 import BG from '@/assets/Resources/ngozi.png'
-
+import Post from '@/shared/Post'
+import Chair from '@/assets/Resources/chair.png'
+import Girl from '@/assets/Resources/girl.png'
 const Home = () => {
  
 return (
@@ -50,6 +52,34 @@ return (
                 <img src={BG} alt='stories image' className='mt-12' />
             </div>
         </div> 
+        <div className=' px-[98px] py-[73px] bg-[#f9f9f9] w-full md:h-[895px] mt-[96px]'>
+            <h1 className=' text-[#FF1723] text-[20px] leading-[30px] font-medium'>Other Stories</h1>
+            <div className=' mt-[50px] flex flex-row gap-8'>
+                <Post
+                    category='Dental Care'
+                    reactions='11'
+                    likes='10'
+                    date='February 2, 2024'
+                    time='4:15 pm'
+                    title='Mr. Olumede’s smile is a bright as the sun'
+                    slug='Through continuous learning, virtuous principles, and a patient-first approach, we aim to be 
+                    the trusted healthcare partner, ensuring each individual receives the highest quality of care, 
+                    support, and expertise on their journey to optimal.'
+                    image={Chair}
+                />
+                <Post
+                    category='Cardiothoracic Surgery'
+                    reactions='11'
+                    likes='10'
+                    date='February 2, 2024'
+                    time='4:15 pm'
+                    title='I have not been able to breath well since I was 12'
+                    slug='Through continuous learning, virtuous principles, and a patient-first approach, we aim to be the trusted healthcare partner, ensuring each individual 
+                    receives the highest quality of care, support, and expertise on their journey to optimal.'
+                    image={Girl}
+                />
+            </div>
+        </div>
     </section>
     )
 }
