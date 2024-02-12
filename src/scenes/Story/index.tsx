@@ -28,7 +28,7 @@ function EventsPage() {
       selectedPage = {selectedPage} 
       setSelectedPage = {setSelectedPage} />
       <Home/>
-      <Recommendations/>
+
       <Footer/>
     </div>
   )

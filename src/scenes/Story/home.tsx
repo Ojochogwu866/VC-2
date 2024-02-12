@@ -6,7 +6,7 @@ const Home = () => {
   return (
   <section className=' flex flex-col'>
   
-    </section>
+  </section>
     )
 }
 export default Home

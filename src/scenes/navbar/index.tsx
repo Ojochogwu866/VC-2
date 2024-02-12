@@ -43,10 +43,10 @@ const Navbar = ({isTopOfPage, selectedPage,  setSelectedPage}: Props) => {
                                 <Page page="Home" pagelink='' textStyles='text-black' 
                                     selectedPage={selectedPage}
                                     setSelectedPage={setSelectedPage}/>
-                                <Page page="Book Appointment" pagelink="events" textStyles='text-black'   
+                                <Page page="Book Appointment" pagelink="book" textStyles='text-black'   
                                     selectedPage={selectedPage} 
                                     setSelectedPage={setSelectedPage}/>
-                                <Page page="Patient Stories" pagelink="community" textStyles='text-black'  
+                                <Page page="Patient Stories" pagelink="stories" textStyles='text-black'  
                                     selectedPage={selectedPage} 
                                     setSelectedPage={setSelectedPage}/>
                             </motion.div> 
@@ -81,10 +81,10 @@ const Navbar = ({isTopOfPage, selectedPage,  setSelectedPage}: Props) => {
                             <Page page="Home" pagelink='' textStyles='text-black font-bold' 
                                 selectedPage={selectedPage}
                                 setSelectedPage={setSelectedPage}/>
-                            <Page page="Book Appointment" pagelink="events" textStyles='text-black font-bold'   
+                            <Page page="Book Appointment" pagelink="book" textStyles='text-black font-bold'   
                                 selectedPage={selectedPage} 
                                 setSelectedPage={setSelectedPage}/>
-                            <Page page="Patient Stories" pagelink="community" textStyles='text-black font-bold'  
+                            <Page page="Patient Stories" pagelink="stories" textStyles='text-black font-bold'  
                                 selectedPage={selectedPage} 
                                 setSelectedPage={setSelectedPage}/>
                             <Link className=' bg-[#02AD4D] text-white text-sm 

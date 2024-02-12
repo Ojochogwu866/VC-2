@@ -1,8 +1,7 @@
 export enum SelectedPage {
     Home = "home",
-    Events = "events",
-    Community = "community",
-    Mentorship = "mentorship"
+    Book = "book",
+    stories = "stories",
   }
 
 export interface CardInterface {
