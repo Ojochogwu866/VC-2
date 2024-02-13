@@ -1,7 +1,42 @@
-import Card from "@/shared/Card"
-import Slide1 from '@/assets/Resources/slide1.png'
-function about() {
-  return (
+ import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Slide1 from '@/assets/Resources/slide1.png';
+import Card from '@/shared/Card';
+
+
+const About = () => {
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (galleryRef.current) {
+      const galleryWidth = galleryRef.current?.scrollWidth || 0;
+      const amountToScroll = galleryWidth - window.innerWidth;
+
+      const autoScroll = gsap.to(galleryRef.current, {
+        x: `-=${amountToScroll}`,
+        duration: 20,
+        ease: 'linear',
+        repeat: -1,
+        paused: false
+      });
+
+      ScrollTrigger.create({
+        trigger: galleryRef.current,
+        start: 'top center',
+        onEnter: () => {
+          autoScroll.play(); 
+        },
+        onLeaveBack: () => {
+          autoScroll.reverse(); 
+        }
+      });
+    }
+  }, []);
+
+   return (
     <section className=" mt-[160px]">
         <div className=" bg-[url(@/assets/Resources/about.svg)] w-full h-[961px] bg-center bg-cover pt-[118px] flex flex-col justify-start items-center">
             <div className=" flex flex-col justify-center items-center">
@@ -25,14 +60,7 @@ function about() {
                 title="Care Approach"
                 content="Our virtues and values uphold the health of our patients, and doing everything possible to give them the best care and ensure they receive maximal and adequate service."
             />
-             {/* <Card
-                title="Core Values"
-                content="• Excellence in Expertise       
-                    • Patient-Centric Care
-                    • Virtues-Driven Healthcare
-                    • Personalised Care
-                    • Adequate Service Delivery"
-            /> */}
+
               <div  
                 className='card min-w-[320px] max-w-[360px] h-[480px]  relative bg-[#02AD4D] p-[40px]'>
                     <div className=" w-full h-full flex flex-col items-start">
@@ -70,13 +98,12 @@ function about() {
                 </svg>
             </div>
         </div>
-        <main className="flex justify-center items-center mt-2">
-            <div className=" h-[723px] w-full flex justify-center items-center">
-                <img className=" h-full w-full object-cover" src={Slide1} alt=""/>
-            </div>
-        </main>
+        <div ref={galleryRef} className="flex w-full ">
+                <img className=" h-[700px] w-fit object-cover" src={Slide1} alt=""/>
+                <img className=" h-[700px] w-fit object-cover" src={Slide1} alt=""/>               
+        </div>
     </section>
   )
 }
 
-export default about
+export default About;
