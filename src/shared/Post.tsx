@@ -23,7 +23,7 @@ const Post = ({title,  slug, image, time, date, reactions, likes, category} : Po
             <div className="text-xs font-normal text-white leading-[14px]">{date}</div>
         </div>
         <p className=" mt-2 font-bold text-white text-[24px] leading-8">{title}</p>
-        <p className=" mt-6 text-sm font-light text-white font-[satoshi,sans-serif]">{slug}</p>
+        <p className=" mt-6 text-sm font-light text-white font-[Satoshi-Medium]">{slug}</p>
         </div>
         <div className="w-full  absolute bottom-0">
             <img src={image} alt="" className=" "/>

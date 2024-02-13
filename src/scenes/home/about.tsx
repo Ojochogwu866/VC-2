@@ -49,7 +49,7 @@ const About = () => {
             </div>
             <div className=" flex justify-center flex-col items-center">
                 <h1 className=" text-white font-bold md:text-[227px] mx-auto">About Us</h1>
-                <p className=" md:w-2/4 text-center text-[24px] leading-[33px] text-white">
+                <p className=" md:w-2/4 text-center font-[Satoshi-Bold] text-[24px] leading-[33px] text-white">
                     Our virtues and values uphold the health of our patients, and doing everything possible to give them the best care and ensure they recieve maximal and adequate service .
                 </p>
             </div>
@@ -64,12 +64,12 @@ const About = () => {
               <div  
                 className='card min-w-[320px] max-w-[360px] h-[480px]  relative bg-[#02AD4D] p-[40px]'>
                     <div className=" w-full h-full flex flex-col items-start">
-                        <ul>
-                            <li className=" text-lg font-normal text-white">• Excellence in Expertise</li>
-                            <li className=" text-lg font-normal text-white"> • Patient-Centric Care</li>
-                            <li className=" text-lg font-normal text-white">• Virtues-Driven Healthcare</li>
-                            <li className=" text-lg font-normal text-white">• Personalised Care</li>
-                            <li className=" text-lg font-normal text-white"> • Adequate Service Delivery</li>
+                        <ul className=' font-[Satoshi-Medium]'>
+                            <li className=" text-base font-normal text-white">• Excellence in Expertise</li>
+                            <li className=" text-base font-normal text-white"> • Patient-Centric Care</li>
+                            <li className=" text-base font-normal text-white">• Virtues-Driven Healthcare</li>
+                            <li className=" text-base font-normal text-white">• Personalised Care</li>
+                            <li className=" text-base font-normal text-white"> • Adequate Service Delivery</li>
                         </ul>
                         <h1 className="props h-full flex bottom-0 justify-end items-end font-normal text-[60px] text-white leading-[64px]">Core Values</h1>
                     </div>
