@@ -1,4 +1,4 @@
- import { useEffect, useRef } from 'react';
+ import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Slide1 from '@/assets/Resources/slide1.png';
@@ -7,6 +7,51 @@ import Card from '@/shared/Card';
 
 const About = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
+   const cardContainerRef = useRef<HTMLDivElement>(null);
+  const cardWidthRef = useRef<number>(0);
+  const [currentScroll, setCurrentScroll] = useState(0); 
+  const [maxScroll, setMaxScroll] = useState(0); 
+
+
+  const scrollLeft = () => {
+    if (currentScroll > 0 && cardContainerRef.current && cardWidthRef.current) {
+      const cardWidth = cardWidthRef.current;
+      const newScroll = currentScroll - cardWidth;
+      gsap.to(cardContainerRef.current, { x: -newScroll, duration: 0.5, ease: 'power2.inOut' });
+      setCurrentScroll(newScroll);
+    }
+  };
+
+
+  const scrollRight = () => {
+    if (currentScroll < maxScroll && cardContainerRef.current && cardWidthRef.current) {
+      const cardWidth = cardWidthRef.current;
+      const newScroll = currentScroll + cardWidth;
+      gsap.to(cardContainerRef.current, { x: -newScroll, duration: 0.5, ease: 'power2.inOut' });
+      setCurrentScroll(newScroll);
+    }
+  };
+
+  const calculateMaxScroll = () => {
+    if (cardContainerRef.current && cardWidthRef.current) {
+      const containerWidth = cardContainerRef.current.offsetWidth;
+      const totalWidth = cardWidthRef.current + cardContainerRef.current.children.length;
+      const newMaxScroll = totalWidth + containerWidth;
+      setMaxScroll(newMaxScroll);
+    }
+  };
+
+  const calculateCardWidth = () => {
+    if (cardContainerRef.current) {
+      const firstCard = cardContainerRef.current.firstElementChild as HTMLElement;
+      if (firstCard) {
+        const cardWidth = firstCard.offsetWidth;
+        cardWidthRef.current = cardWidth;
+      }
+    }
+  };
+ 
+
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -34,6 +79,8 @@ const About = () => {
         }
       });
     }
+    calculateCardWidth();
+    calculateMaxScroll();
   }, []);
 
    return (
@@ -54,8 +101,8 @@ const About = () => {
                 </p>
             </div>
         </div>
-        <div className=" w-full h-[691px] flex flex-col justify-center  bg-[#383838]  -mt-2">
-            <div className=" flex gap-[38px] justify-start items-center">
+        <div  className="  w-full h-[691px] relative flex flex-col justify-center  bg-[#383838]  -mt-2  p-4">
+            <div ref={cardContainerRef} className=" flex gap-[38px] ml-10 justify-start items-center">
             <Card
                 title="Care Approach"
                 content="Our virtues and values uphold the health of our patients, and doing everything possible to give them the best care and ensure they receive maximal and adequate service."
@@ -64,7 +111,7 @@ const About = () => {
               <div  
                 className='card min-w-[320px] max-w-[360px] h-[480px]  relative bg-[#02AD4D] p-[40px]'>
                     <div className=" w-full h-full flex flex-col items-start">
-                        <ul className=' font-[Satoshi-Medium]'>
+                        <ul className=' font-[Satoshi-Medium] leading-7'>
                             <li className=" text-base font-normal text-white">• Excellence in Expertise</li>
                             <li className=" text-base font-normal text-white"> • Patient-Centric Care</li>
                             <li className=" text-base font-normal text-white">• Virtues-Driven Healthcare</li>
@@ -88,11 +135,11 @@ const About = () => {
             />
             </div>
             <div className=" mt-8 flex gap-4 px-[100px]">
-                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg onClick={scrollLeft} width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="2" y="1.76367" width="47" height="47" rx="23.5" stroke="white" stroke-width="3"/>
                     <path d="M29.647 16.9697L21.353 25.2637L29.647 33.5576" stroke="white" stroke-width="2.76464" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg onClick={scrollRight} width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.5" y="0.263672" width="50" height="50" rx="25" fill="#515151"/>
                     <path d="M21.353 33.5576L29.647 25.2637L21.353 16.9698" stroke="white" stroke-width="2.76464" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
