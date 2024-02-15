@@ -7,6 +7,7 @@ export enum SelectedPage {
 export interface CardInterface {
   title: string,
   content: string,
+
 } 
 
 export interface PostCardInterface {

@@ -1,17 +1,29 @@
- import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Slide1 from '@/assets/Resources/slide1.png';
 import Card from '@/shared/Card';
 
+type Cards = {
+    title: string,
+    content: string
+}
 
 const About = () => {
-  const galleryRef = useRef<HTMLDivElement>(null);
-   const cardContainerRef = useRef<HTMLDivElement>(null);
-  const cardWidthRef = useRef<number>(0);
-  const [currentScroll, setCurrentScroll] = useState(0); 
-  const [maxScroll, setMaxScroll] = useState(0); 
 
+      const cards: Cards[] = [
+        { title:'Care Approach', content: 'Our virtues and values uphold the health of our patients, and doing everything possible to give them the best care and ensure they receive maximal and adequate service.'},
+        { title:'Purpose', content:'Through continuous learning, virtuous principles, and a patient-first approach, we aim to be the trusted healthcare partner, ensuring each individual receives the highest quality of care, support, and expertise on their journey to optimal health.'},
+        { title:'Vision', content: 'To be the forefront of transformative healthcare, redefining medical excellence and patient outcomes'},
+        { title:'Mission', content:'Guided by a commitment to excellence, compassion, and innovation, we strive to empower individuals on their journey to optimal health.'},
+        // {id: 5, title:'Core Values', content:" 'Excellence in Expertise', 'Patient-Centric Care Virtues-Driven Healthcare Personalised Care Adequate Service Delivery"},
+    ]
+
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+  const cardWidthRef = useRef<number>(0);
+  const [currentScroll, setCurrentScroll] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
 
   const scrollLeft = () => {
     if (currentScroll > 0 && cardContainerRef.current && cardWidthRef.current) {
@@ -21,7 +33,6 @@ const About = () => {
       setCurrentScroll(newScroll);
     }
   };
-
 
   const scrollRight = () => {
     if (currentScroll < maxScroll && cardContainerRef.current && cardWidthRef.current) {
@@ -50,8 +61,6 @@ const About = () => {
       }
     }
   };
- 
-
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -72,16 +81,29 @@ const About = () => {
         trigger: galleryRef.current,
         start: 'top center',
         onEnter: () => {
-          autoScroll.play(); 
+          autoScroll.play();
         },
         onLeaveBack: () => {
-          autoScroll.reverse(); 
+          autoScroll.reverse();
         }
       });
     }
+
     calculateCardWidth();
     calculateMaxScroll();
   }, []);
+
+useEffect(() => {
+  if (cardContainerRef.current) {
+    const cards = Array.from(cardContainerRef.current.children) as HTMLElement[];
+    cards.forEach((card, index) => {
+      const isVisible = index === 0;
+      const transparentBackground = isVisible;
+      card.style.backgroundColor = transparentBackground ? 'transparent' : '#02AD4D'; // Set background color accordingly
+    });
+  }
+}, [currentScroll]);
+
 
    return (
     <section className=" mt-[160px]">
@@ -101,13 +123,16 @@ const About = () => {
                 </p>
             </div>
         </div>
-        <div  className="  w-full h-[691px] relative flex flex-col justify-center  bg-[#383838]  -mt-2  p-4">
-            <div ref={cardContainerRef} className=" flex gap-[38px] ml-10 justify-start items-center">
-            <Card
-                title="Care Approach"
-                content="Our virtues and values uphold the health of our patients, and doing everything possible to give them the best care and ensure they receive maximal and adequate service."
+        <div  className="  w-full h-[691px] relative flex flex-col justify-center bg-[#383838] -mt-2  ">
+            <div ref={cardContainerRef} className=" flex justify-start items-around">
+            {cards.map((card, index) => (
+           <Card
+              key={index}
+              title={card.title}
+              content={card.content}
+    
             />
-
+          ))}
               <div  
                 className='card min-w-[320px] max-w-[360px] h-[480px]  relative bg-[#02AD4D] p-[40px]'>
                     <div className=" w-full h-full flex flex-col items-start">
@@ -121,18 +146,6 @@ const About = () => {
                         <h1 className="props h-full flex bottom-0 justify-end items-end font-normal text-[60px] text-white leading-[64px]">Core Values</h1>
                     </div>
                 </div>
-             <Card
-                title="Purpose"
-                content="Through continuous learning, virtuous principles, and a patient-first approach, we aim to be the trusted healthcare partner, ensuring each individual receives the highest quality of care, support, and expertise on their journey to optimal health."
-            />
-             <Card
-                title="Vision"
-                content="To be the forefront of transformative healthcare, redefining medical excellence and patient outcomes"
-            />
-             <Card
-                title="Mission"
-                content="Guided by a commitment to excellence, compassion, and innovation, we strive to empower individuals on their journey to optimal health. "
-            />
             </div>
             <div className=" mt-8 flex gap-4 px-[100px]">
                 <svg onClick={scrollLeft} width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,12 +158,14 @@ const About = () => {
                 </svg>
             </div>
         </div>
+
         <div ref={galleryRef} className="flex w-full ">
                 <img className=" h-[700px] w-fit object-cover" src={Slide1} alt=""/>
                 <img className=" h-[700px] w-fit object-cover" src={Slide1} alt=""/>               
         </div>
+
     </section>
   )
 }
 
-export default About;
+export default About;    

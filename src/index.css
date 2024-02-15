@@ -46,3 +46,11 @@ html, body, #root, .app{
 .stories{
   font-family: Arial, sans-serif;
 }
+
+
+
+.card.active {
+  /* Add styling for the active card */
+  /* For example: */
+  background-color: transparent;
+}
