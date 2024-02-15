@@ -47,10 +47,10 @@ html, body, #root, .app{
   font-family: Arial, sans-serif;
 }
 
-
-
 .card.active {
-  /* Add styling for the active card */
-  /* For example: */
   background-color: transparent;
+}
+.transparent-background {
+  background-color: transparent !important;
+  transition: background-color 0.5s ease; 
 }

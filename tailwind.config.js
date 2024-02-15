@@ -5,6 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+      screens: {
+        sx: { max: "767px" },
+        fm:"460px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        mg:  "1180px",
+        xl: "1280px",
+      },
     extend: {
       boxShadow: {
         form:'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
