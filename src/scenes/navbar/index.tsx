@@ -1,5 +1,4 @@
 import {useState} from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 import Logo from '@/assets/vinca-logo.svg'
 import Page from './Link'
