@@ -6,7 +6,6 @@ import styles from '@/styles/styles';
 import gsap from 'gsap';
 
 const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLImageElement>(null);
   const testimonialRefs = useRef<(HTMLDivElement | null)[]>([null, null, null]);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -65,9 +64,8 @@ const Hero = () => {
 
   return (
     <section className='flex flex-col'>
-      <div className={`h-[800px] w-full relative flex justify-center items-center ${heroScrollComplete ? 'static' : 'fixed'}`} ref={heroRef}>
+      <div className='h-[800px] w-full relative flex justify-center items-center'>
         <img ref={slideRef} src={Slide1} alt="hero-image" className='w-full h-full bg-center bg-cover object-cover'/>
-        
         <div  
           className='max-w-[400px] rounded-[24px] absolute h-[124px] bg-[#02AD4D] bg-opacity-20 p-2'>
           {testimonials.map((testimonial, index) => (
