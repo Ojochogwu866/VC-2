@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import Slide1 from '@/assets/Resources/slide-1.png';
-import Slide2 from '@/assets/Resources/slide-2.png';
-import Slide3 from '@/assets/Resources/slide-3.png';
+import Slide1 from '../../assets/Resources/slide-1.png';
+import Slide2 from '../../assets/Resources/slide-2.png';
+import Slide3 from '../../assets/Resources/slide-3.png';
 import styles from '@/styles/styles';
 import gsap from 'gsap';
 

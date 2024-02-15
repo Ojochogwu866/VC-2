@@ -1,7 +1,7 @@
 import  { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import Slide1 from '@/assets/Resources/slide1.png';
+import Slide1 from '../../assets/Resources/slide1.png';
 import Card from '@/shared/Card';
 
 type Cards = {
