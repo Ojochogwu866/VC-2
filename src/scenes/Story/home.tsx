@@ -130,6 +130,7 @@ const Home = () => {
       </div>
       <div className="flex flex-wrap justify-center items-center md:gap-8 ">
           {displayedPosts.map((post, index) => (
+            
             <Post
               key={index}
               category={post.category}

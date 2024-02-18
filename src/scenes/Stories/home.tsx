@@ -5,7 +5,7 @@ import Girl from '@/assets/Resources/girl.png'
 const Home = () => {
  
 return (
-    <section className="">
+    <section className="flex flex-col justify-center items-center">
         <div className="h-[600px] bg-story w-full bg-no-repeat bg-cover 
         bg-center flex justify-center items-center">
             <h1 className="font-bold mt-5 md:text-[80px] text-white leading-[97px]">Ngozi's Story</h1>

@@ -67,7 +67,7 @@ const Hero = () => {
       <div className='h-[800px] w-full relative flex justify-center items-center'>
         <img ref={slideRef} src={Slide1} alt="hero-image" className='w-full -z-50 h-full bg-center bg-cover object-cover'/>
         <div  
-          className='max-w-[400px] rounded-[24px] absolute h-[124px] bg-[#02AD4D] bg-opacity-20 p-2'>
+          className='max-w-[380px] min-w-[320px] rounded-[24px] absolute h-[124px] bg-[#02AD4D] bg-opacity-20 p-2'>
           {testimonials.map((testimonial, index) => (
           <div ref={ref => (testimonialRefs.current[index] = ref)}  
           style={{
@@ -96,7 +96,7 @@ const Hero = () => {
         </div>
       </div>
       <div className='mt-[-120px] flex justify-center items-center'>
-        <div className='max-w-[426px] min-w-[320px] fm:min-w-11/12 h-[562px] bg-white shadow-form p-10 rounded-3xl flex justify-start items-center'>
+        <div className='md:w-[426px] w-[320px] h-[562px] bg-white shadow-form p-10 rounded-3xl flex justify-start items-center'>
           <form className='flex flex-col'>
             <h1 className='font-bold text-[#013919] text-[20px]'>Book Appointment Now</h1>
             <div className='flex flex-col mt-[35px]'>
