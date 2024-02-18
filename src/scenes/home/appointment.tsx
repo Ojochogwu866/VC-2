@@ -21,9 +21,6 @@ function appointment() {
         <Nhis
           image={Axa}
         />
-        <Nhis
-          image={NHIS}
-        />
       </div>
     </div>
   )

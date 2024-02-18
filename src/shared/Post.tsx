@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 const Post = ({title,  slug, image, time, date, reactions, likes, category} : PostCardInterface) => { 
   return (
   <motion.div  
-  className='card min-w-[320px] max-w-[507px] h-[580px]  relative bg-[#383838] font-[Arial,sans-serif]'>
+  className='card w-[320px] fm:max-w-11/12 md:w-[507px] h-[580px]
+   relative bg-[#383838] font-[Arial,sans-serif]'>
     <div className=" w-full h-full flex flex-col items-start">
         <div className=" p-[20px] flex flex-col items-start">
         <h1 className=" leading-5 text-[14px] text-[#04FD71]">{category}</h1>

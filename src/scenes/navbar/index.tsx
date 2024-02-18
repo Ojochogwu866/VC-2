@@ -1,3 +1,6 @@
+
+//nav-bar
+
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '@/assets/vinca-logo.svg'
@@ -72,7 +75,7 @@ const Navbar = ({isTopOfPage, selectedPage,  setSelectedPage}: Props) => {
                 </motion.div> 
             </div>
         </div>
-
+i
         {/*Mobile Menu Modal*/}
         {!isAboveMediumScreens && isMenuToggled && (
             <motion.div 

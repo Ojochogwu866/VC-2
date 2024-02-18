@@ -128,7 +128,7 @@ const Home = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-8 ">
+      <div className="flex flex-wrap justify-center items-center md:gap-8 ">
           {displayedPosts.map((post, index) => (
             <Post
               key={index}
