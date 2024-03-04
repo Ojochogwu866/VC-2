@@ -3,7 +3,7 @@ import Axa from '@/assets/Resources/AXA.png'
 import NHIS from '@/assets/Resources/NHIS.png'
 function appointment() {
   return (
-    <div className=" h-auto md:h-[787px] bg-[#02AD4D] w-full mt-[181px] py-[108px]">
+    <section id="book-appointment" className=" h-auto md:h-[787px] bg-[#02AD4D] w-full mt-[181px] py-[108px]">
       <div className=" flex flex-col justify-center items-center">
         <p className=" font-bold text-white text-[29px] leading-[41px] text-center">Just one step from your appointment</p>
         <div className=" mt-[50px] border-[1.5px] border-white text-white py-[16px] px-[20px] rounded-[15px]">Book Now</div>
@@ -22,7 +22,7 @@ function appointment() {
           image={Axa}
         />
       </div>
-    </div>
+    </section>
   )
 }
 
