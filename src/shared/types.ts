@@ -1,6 +1,5 @@
 export enum SelectedPage {
     Home = "home",
-    Book = "#book-appointment",
     stories = "stories",
   }
 

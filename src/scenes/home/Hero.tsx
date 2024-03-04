@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slide1 from '../../assets/Resources/slide-1.png';
 import Slide2 from '../../assets/Resources/slide-2.png';
 import Slide3 from '../../assets/Resources/slide-3.png';
@@ -10,6 +10,15 @@ const Hero = () => {
   const testimonialRefs = useRef<(HTMLDivElement | null)[]>([null, null, null]);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [heroScrollComplete, setHeroScrollComplete] = useState(false);
+  const [selectedForm, setSelectedForm] = useState<'phone' | 'email'>('email');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    department: '',
+    date: '',
+    email: '',
+    phone: ''
+  });
+  const [formError, setFormError] = useState('');
 
   const testimonials = [
     {
@@ -56,11 +65,41 @@ const Hero = () => {
       }
     };
     const intervalId = setInterval(nextSlide, 3000);
-
     return () => {
       clearInterval(intervalId);
     };
   }, [currentTestimonialIndex, heroScrollComplete]);
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://dummy-api.com/form-submit', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+      setFormData({
+        fullName: '',
+        department: '',
+        date: '',
+        email: '',
+        phone: ''
+      });
+      setFormError('');
+      console.log('Form submitted successfully');
+    } catch (error) {
+      setFormError('Failed to submit form. Please try again later.');
+    }
+  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <section className='flex flex-col'>
@@ -97,23 +136,79 @@ const Hero = () => {
       </div>
       <div className='mt-[-120px] flex justify-center items-center'>
         <div className='md:w-[426px] w-[320px] h-[562px] bg-white shadow-form p-10 rounded-3xl flex justify-start items-center'>
-          <form className='flex flex-col'>
+          <form className='flex flex-col' onSubmit={handleFormSubmit}>
             <h1 className='font-bold text-[#013919] text-[20px]'>Book Appointment Now</h1>
-            <div className='flex flex-col mt-[35px]'>
-              <label className='text-sm font-medium text-[#2F4E44] pr-2 gap-2 leading-[18px]'><input className='mr-2' type='radio'/>Book with Phone Number</label>
-              <label className='text-sm font-medium text-[#2F4E44] pr-2 gap-2 leading-[18px]'><input className='mr-2 mt-3' type='radio'/>Book with Email</label>
+            <div className='flex flex-col mt-[35px] space-y-4'>
+              <label className='text-base font-medium text-[#2F4E44] pr-2 gap-2 leading-[18px]'>
+                <input
+                  className="gap-2 mr-2 w-5 h-5 rounded-full"
+                  type='radio'
+                  name='bookingType'
+                  value='phone'
+                  checked={selectedForm === 'phone'}
+                  onChange={() => setSelectedForm('phone')}
+                />
+                Book with Phone Number
+              </label>
+              <label className='text-base font-medium text-[#2F4E44] pr-2 gap-2 leading-[18px]'>
+                <input
+                  className="gap-2 mr-2 w-5 h-5 rounded-full"
+                  type='radio'
+                  name='bookingType'
+                  value='email'
+                  checked={selectedForm === 'email'}
+                  onChange={() => setSelectedForm('email')}
+                />
+                Book with Email
+              </label>
             </div>
             <div className='mt-[26px]'>
-              <input className={`${styles.formInput}`} placeholder='Full Name' />
-              <select title='select' className={`${styles.formInput}`}>
+              <input
+                className={`${styles.formInput}`}
+                placeholder='Full Name'
+                name='fullName'
+                value={formData.fullName}
+                onChange={handleInputChange}
+              />
+              <select
+                title='select'
+                className={`${styles.formInput}`}
+                name='department'
+                value={formData.department}
+                onChange={handleInputChange}
+              >
                 <option value="" disabled>Select Department</option>
+                <option value="fertility_clinic"> Fertility Clinic</option>
+                <option value="in_vitro">In-Vitro Fertilization</option>
+                <option value="dental">Dental Care</option>
+                <option value="cardio">Cardiothoracic Surgery</option>
+                <option value="oncology">Oncology Surgery</option>
+                <option value="vascular">Vascular Surgery</option>
               </select>
-              <input type='date' className={`${styles.formInput}`} placeholder='Date' />
-              <input className={`${styles.formInput}`} placeholder='Phone No_' />
+              <input
+                type={selectedForm === 'phone' ? 'tel' : 'email'}
+                className={`${styles.formInput}`}
+                placeholder={selectedForm === 'phone' ? 'Phone No_' : 'Email'}
+                name={selectedForm === 'phone' ? 'phone' : 'email'}
+                value={selectedForm === 'phone' ? formData.phone : formData.email}
+                onChange={handleInputChange}
+              />
+              <input
+                type='date'
+                className={`${styles.formInput}`}
+                placeholder='Date'
+                name='date'
+                value={formData.date}
+                onChange={handleInputChange}
+              />
             </div>
-            <button className='bg-[#02AD4D] h-[52px] w-full rounded-[15px] text-white flex justify-center items-center text-base mt-[41px]'>
+            <button
+              type='submit'
+              className='bg-[#02AD4D] h-[52px] w-full rounded-[15px] text-white flex justify-center items-center text-base mt-[41px]'
+            >
               Book Appointment
             </button>
+            {formError && <p className='text-red-500 mt-2'>{formError}</p>}
           </form>
         </div>
       </div>
@@ -122,4 +217,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
