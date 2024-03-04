@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <App/>,
   },
   {
-    path: "/story",
+    path: "/story/:post.slug.current",
     element: <Stories/>,
   },
 

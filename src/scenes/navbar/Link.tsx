@@ -31,7 +31,7 @@ const Page: React.FC<Props> = ({
   if (pagelink === '#book-appointment') {
     return (
       <NavLink
-        to={`/${pagelink}`}
+        to={`${pagelink}`}
         className={`${selectedPage === lowerCasePage ? "" : ""} font-medium text-[14px] text-[#013919] pb-[4px] ${textStyles}`}
         onClick={scrollToBookAppointment}
       >

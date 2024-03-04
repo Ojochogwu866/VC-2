@@ -3,7 +3,7 @@ import Post from '@/shared/Post'
 import Chair from '@/assets/Resources/chair.png'
 import Girl from '@/assets/Resources/girl.png'
 const Home = () => {
- 
+
 return (
     <section className="flex flex-col justify-center items-center">
         <div className="h-[600px] bg-story w-full bg-no-repeat bg-cover 
