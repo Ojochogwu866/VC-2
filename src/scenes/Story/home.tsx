@@ -80,6 +80,7 @@ useEffect(() => {
   }, [selectedCategory, posts]);
 
   return (
+    <>
     <section className='flex flex-col justify-center items-center'>
       <div className="flex flex-col justify-center items-center text-center mt-[150px]">
         <h1 className="font-[400px] text-[#013919] text-[28px] leading-[28px]">Read Vinca Stories</h1>
@@ -128,6 +129,7 @@ useEffect(() => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
